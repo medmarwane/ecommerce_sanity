@@ -2,7 +2,7 @@ import React from "react"
 
 import { client } from "../lib/client"
 
-import { Products, FooterBanner, HeroBanner } from "../components"
+import { Product, FooterBanner, HeroBanner } from "../components"
 
 const Home = ({ products, bannerData }) => {
   return (
@@ -13,7 +13,11 @@ const Home = ({ products, bannerData }) => {
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
       </div>
-      <div className="products-container">{products?.map(product => product.name)}</div>
+      <div className="products-container">
+        {products?.map(product => (
+          <Product key={product._id} product={product} />
+        ))}
+      </div>
       <FooterBanner />
     </>
   )
