@@ -1,13 +1,13 @@
 import React from "react"
 import Head from "next/head"
 
-import {Navbar, Footer} from "./"
+import { Navbar, Footer } from "./"
 
 const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Head>
-        <title>devMed Store</title>
+        <title>devmed Store</title>
       </Head>
       <header>
         <Navbar />
