@@ -3,26 +3,33 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-
 
 import { client, urlFor } from "../../lib/client"
 import { Product } from "../../components"
-import {useStateContext} from "../../context/StateContext"
+import { useStateContext } from "../../context/StateContext"
 
-const ProductDetails = ({ products, product }) => {
+const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product
   const [index, setIndex] = useState(0)
-  const { incQty, decQty, qty, onAdd} = useStateContext()
+  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext()
+
+  const handleBuyNow = () => {
+    onAdd(product, qty)
+
+    setShowCart(true)
+  }
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(image && image[index])} alt="" className="product-detail-image" />
+            <img src={urlFor(image && image[index])} className="product-detail-image" />
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
-              <img src={urlFor(item)} onMouseEnter={() => setIndex(i)} className={i === index ? "small-image selected-image" : "small-image"} key={i} />
+              <img key={i} src={urlFor(item)} className={i === index ? "small-image selected-image" : "small-image"} onMouseEnter={() => setIndex(i)} />
             ))}
           </div>
         </div>
+
         <div className="product-detail-desc">
           <h1>{name}</h1>
           <div className="reviews">
@@ -44,9 +51,7 @@ const ProductDetails = ({ products, product }) => {
               <span className="minus" onClick={decQty}>
                 <AiOutlineMinus />
               </span>
-              <span className="num">
-                {qty}
-              </span>
+              <span className="num">{qty}</span>
               <span className="plus" onClick={incQty}>
                 <AiOutlinePlus />
               </span>
@@ -56,12 +61,13 @@ const ProductDetails = ({ products, product }) => {
             <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick={() => {}}>
+            <button type="button" className="buy-now" onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
         </div>
       </div>
+
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
         <div className="marquee">
@@ -77,11 +83,12 @@ const ProductDetails = ({ products, product }) => {
 }
 
 export const getStaticPaths = async () => {
-  const query = `*[_type == "product"]{
+  const query = `*[_type == "product"] {
     slug {
       current
     }
-  }`
+  }
+  `
 
   const products = await client.fetch(query)
 
