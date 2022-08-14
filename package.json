@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "(cd backend-ecommerce && sanity start) & next dev",
+    "dev": "(cd backend-ecommerce && sanity start) & (npm run postcss) & next dev",
+    "postcss": "postcss ./styles/style.css -o ./styles/main.css -w",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -24,7 +25,15 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
+    "autoprefixer": "^10.4.8",
     "eslint": "8.20.0",
-    "eslint-config-next": "12.2.2"
+    "eslint-config-next": "12.2.2",
+    "normalize.css": "^8.0.1",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "postcss-import": "^14.1.0",
+    "postcss-mixins": "^9.0.3",
+    "postcss-nested": "^5.0.6",
+    "postcss-simple-vars": "^6.0.3"
   }
 }

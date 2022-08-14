@@ -1,0 +1,12 @@
+.footer-container {
+  min-height: 80px;
+  text-align: center;
+  padding-top: 25px;
+  font-size: medium;
+
+  &--icons {
+    cursor: pointer;
+    margin-top: 5px;
+    font-size: x-large;
+  }
+}

@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: $myColor;
+
+  &-logo {
+    cursor: pointer;
+    max-width: 50px;
+    border-radius: 50%;
+  }
+
+  &-cart {
+    position: relative;
+    margin-top: 10px;
+    border: none;
+    height: 40px;
+    padding: 25px;
+    border-radius: 50%;
+    background-color: rgb(207, 207, 207);
+    transition: transform 0.4s ease-in-out;
+
+    &--icon {
+      position: absolute;
+      font-size: xx-large;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 100%;
+    }
+
+    &--qty {
+      position: absolute;
+      font-size: medium;
+      padding: 1px 2px;
+      color: white;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      border-radius: 50%;
+    }
+  }
+  &-cart:hover {
+    transform: scale(1.2, 1.2);
+
+    cursor: pointer;
+  }
+}

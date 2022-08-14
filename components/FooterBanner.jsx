@@ -5,23 +5,31 @@ import { urlFor } from "../lib/client"
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, smallText, midText, product, buttonText, image, desc } }) => {
   return (
-    <div className="footer-banner-container">
-      <div className="banner-desc">
-        <div className="left">
-          <p>{discount}</p>
-          <h3>{largeText1}</h3>
-          <h3>{largeText2}</h3>
-          <p>{saleTime}</p>
+    <div className="footer-banner--container">
+      <div className="footer-banner">
+        <div className="footer-banner--left">
+          <div>
+            <h3 className="footer-banner--left_small-title">{largeText1}</h3>
+            <h3 className="footer-banner--left_title">{largeText2}</h3>
+          </div>
+          <div>
+            <p className="footer-banner--left_discount">{discount}</p>
+            <p className="footer-banner--left_date">{saleTime}</p>
+          </div>
         </div>
-        <div className="right">
-          <p>{smallText}</p>
-          <h3>{midText}</h3>
-          <p>{desc}</p>
+        <div>
+          <img src={urlFor(image)} alt="" className="footer-banner--image" />
+        </div>
+        <div className="footer-banner--right">
+          <p className="footer-banner--right_smallText">{smallText}</p>
+          <h3 className="footer-banner--right_title">{midText}</h3>
+          <p className="footer-banner--right_desc">{desc}</p>
           <Link href={`/product/${product}`}>
-            <button type="button">{buttonText}</button>
+            <button type="button" className="footer-banner--right_btn">
+              {buttonText}
+            </button>
           </Link>
         </div>
-        <img src={urlFor(image)} alt="" className="footer-banner-image" />
       </div>
     </div>
   )

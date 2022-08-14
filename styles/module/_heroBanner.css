@@ -1,0 +1,124 @@
+.hero-banner--container {
+  max-width: 100%;
+}
+
+.hero-banner {
+  position: relative;
+  background-color: rgb(210, 210, 210);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+
+  @mixin atLarge {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 25px;
+    min-height: 300px;
+  }
+
+  &--left {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+
+    @mixin atLarge {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    &_p {
+      font-size: x-large;
+      margin-top: 47px;
+      font-weight: 300;
+    }
+    &_small-title {
+      font-size: x-large;
+      font-weight: 800;
+    }
+    &_title {
+      color: white;
+      font-size: 3rem;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+  }
+
+  &--image {
+    max-height: 320px;
+    object-fit: cover;
+    object-position: top;
+
+    @mixin atSmall {
+      max-height: 360px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    @mixin atMedium {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      -webkit-clip-path: circle(55% at 50% 50%);
+      clip-path: circles(50% at 55% 50%);
+    }
+
+    @mixin atLarge {
+      position: absolute;
+      top: 0;
+      left: 33%;
+      -webkit-clip-path: none;
+      clip-path: none;
+      width: 450px;
+      height: 100%;
+    }
+  }
+
+  &--right {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    margin-top: 15px;
+
+    @mixin atLarge {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    &_head {
+      width: 45%;
+
+      @mixin atLarge {
+        padding-left: 0;
+      }
+    }
+
+    &_small-title {
+      font-size: large;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    &_desc {
+      font-size: medium;
+      color: white;
+      font-weight: 300;
+      width: fit-content;
+    }
+
+    &_btn {
+      padding: 0 20px !important;
+      background-color: orange;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+
+      @mixin atLarge {
+        max-width: fit-content;
+        color: white;
+        padding: 10px 25px !important;
+      }
+    }
+  }
+}
