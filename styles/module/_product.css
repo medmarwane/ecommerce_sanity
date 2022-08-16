@@ -46,21 +46,27 @@
   flex-direction: column;
   transition: transform 0.5s ease-in-out;
   cursor: pointer;
+  width: 250px;
 
   &--image {
     border-radius: 10px;
-    width: 260px;
-    height: 260px;
+    width: 250px;
+    height: 250px;
+  }
+
+  &--paragraphs {
+    max-width: 230px;
   }
 
   &--name {
     font-size: large;
-    max-width: fit-content;
+    width: fit-content;
     margin: 5px 0;
   }
   &--price {
     font-size: medium;
     font-weight: bold;
+    max-width: fit-content !important;
   }
 }
 

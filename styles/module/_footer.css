@@ -3,6 +3,8 @@
   text-align: center;
   padding-top: 25px;
   font-size: medium;
+  background-color: black;
+  color: white;
 
   &--icons {
     cursor: pointer;

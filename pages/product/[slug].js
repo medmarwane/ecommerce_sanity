@@ -18,21 +18,21 @@ const ProductDetails = ({ product, products }) => {
 
   return (
     <div>
-      <div className="product-detail-container">
-        <div>
-          <div className="image-container">
-            <img src={urlFor(image && image[index])} className="product-detail-image" />
+      <div className="product-detail--container">
+        <div className="product-details">
+          <div className="product-details--image">
+            <img src={urlFor(image && image[index])} />
           </div>
-          <div className="small-images-container">
+          <div className="product-details--small_images">
             {image?.map((item, i) => (
               <img key={i} src={urlFor(item)} className={i === index ? "small-image selected-image" : "small-image"} onMouseEnter={() => setIndex(i)} />
             ))}
           </div>
         </div>
 
-        <div className="product-detail-desc">
-          <h1>{name}</h1>
-          <div className="reviews">
+        <div className="desc">
+          <h1 className="desc--title">{name}</h1>
+          <div className="desc--reviews">
             <div>
               <AiFillStar />
               <AiFillStar />
@@ -44,34 +44,34 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <h4>Details: </h4>
           <p>{details}</p>
-          <p className="price">${price}</p>
-          <div className="quantity">
+          <p className="desc--price">${price}</p>
+          <div className="desc--quantity">
             <h3>Quantity:</h3>
-            <p className="quantity-desc">
-              <span className="minus" onClick={decQty}>
+            <p className="desc--quantity-wrapper">
+              <span className="desc--quantity-wrapper_minus" onClick={decQty}>
                 <AiOutlineMinus />
               </span>
-              <span className="num">{qty}</span>
-              <span className="plus" onClick={incQty}>
+              <span className="desc--quantity-wrapper_number">{qty}</span>
+              <span className="desc--quantity-wrapper_plus" onClick={incQty}>
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
-          <div className="buttons">
-            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
+          <div className="desc--button">
+            <button type="button" className="desc--button-add" onClick={() => onAdd(product, qty)}>
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick={handleBuyNow}>
+            <button type="button" className="desc--button-buy" onClick={handleBuyNow}>
               Buy Now
             </button>
           </div>
         </div>
       </div>
 
-      <div className="maylike-products-wrapper">
-        <h2>You may also like those</h2>
-        <div className="marquee">
-          <div className="maylike-products-container track">
+      <div className="maylike-products">
+        <h2 className="maylike-products--title">You may also like those</h2>
+        <div className="maylike-products--marquee">
+          <div className="maylike-products--container track">
             {products.map(item => (
               <Product key={item._id} product={item} />
             ))}

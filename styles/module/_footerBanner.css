@@ -1,6 +1,10 @@
 .footer-banner--container {
   background-color: #ffd38f;
   border-radius: 10px;
+
+  @mixin atLarge {
+    margin-bottom: 60px;
+  }
 }
 
 .footer-banner {

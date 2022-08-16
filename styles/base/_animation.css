@@ -1,0 +1,55 @@
+.maylike-products {
+  margin-top: 50px;
+
+  &--title {
+    text-align: center;
+    font-size: x-large;
+    font-weight: 600;
+    color: $mainBlue;
+  }
+
+  &--marquee {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    animation: fadeIn 0.1s;
+    opacity: 1;
+  }
+
+  &--container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    height: 350px;
+
+    & img {
+      width: 230px;
+      height: 230px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.track {
+  white-space: wrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 100%;
+}
+.track:hover {
+  animation-play-state: paused;
+  opacity: 1 !important;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(-110%);
+    opacity: 1;
+    animation-delay: 0.3s;
+    transition-delay: 3s;
+  }
+}
